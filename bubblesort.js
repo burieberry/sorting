@@ -11,5 +11,3 @@ function bubbleSort(arr) {
   }
   return arr;
 }
-
-// [0,-3,5,2,3,4,99,50,5]
