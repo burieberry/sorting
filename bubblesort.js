@@ -6,8 +6,9 @@ function bubbleSort(arr) {
         arr[i-1] = arr[i];
         arr[i] = temp;
       }
-    console.log(arr);
     }
   }
   return arr;
 }
+
+// to do: separate in-order and swap functions
