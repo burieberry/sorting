@@ -5,11 +5,10 @@ function split(array) {
   return [left, right];
 }
 
-
 function merge(left, right) {
   var sorted = [],
-      leftInd = 0,
-      rightInd = 0;
+    leftInd = 0,
+    rightInd = 0;
 
   while (leftInd < left.length && rightInd < right.length) {
     if (right[rightInd] < left[leftInd]) {
@@ -22,14 +21,17 @@ function merge(left, right) {
     }
   }
 
-  for(; leftInd < left.length; leftInd++) sorted.push(left[leftInd]);
-  for(; rightInd < right.length; rightInd++) sorted.push(right[rightInd]);
+  for (; leftInd < left.length; leftInd++) sorted.push(left[leftInd]);
+  for (; rightInd < right.length; rightInd++) sorted.push(right[rightInd]);
 
   return sorted;
 }
 
-
 function mergeSort(array) {
+  if (array.length < 2) return array;
 
-  return array;
+  var left = split(array)[0];
+  var right = split(array)[1];
+
+  return merge(mergeSort(left), mergeSort(right));
 }

@@ -29,10 +29,20 @@ describe('Merge Sort', function(){
     });
   });
 
-  // describe('mergeSort function', function(){
+  describe('mergeSort', function(){
+    it('with 1 or fewer elements, returns sorted array', function () {
+      expect(mergeSort([])).toEqual([]);
+      expect(mergeSort([1000])).toEqual([1000]);
+    });
 
-  // });
+    it('merge sorts 2 elements', function () {
+      const sorted = mergeSort([10, 2]);
+      expect(sorted).toEqual([2, 10]);
+    });
 
-
-
+    it('does the thing its supposed to do', function () {
+      const sorted = mergeSort([9, 1994, 18, 1, -90, 1234, 56]);
+      expect(sorted).toEqual([-90, 1, 9, 18, 56, 1234, 1994]);
+    });
+  });
 });

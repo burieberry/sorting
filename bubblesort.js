@@ -12,3 +12,4 @@ function bubbleSort(arr) {
 }
 
 // to do: separate in-order and swap functions
+// optimize edge cases
