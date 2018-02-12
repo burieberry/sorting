@@ -1,51 +1,54 @@
 function split(arr) {
-  let firstHalf = [],
-      secondHalf = [];
-
-  let p = 0, // first index
+   const p = 0, // first index
       r = arr.length - 1, // last index
       q = Math.floor((r + p) / 2); // middle index
 
-  let k = p;
+  // without using slice method:
+  // let firstHalf = [],
+  //     secondHalf = [];
 
-  for (let i = 0; k < q + 1; i++, k++) {
-    firstHalf[i] = arr[k];
-  }
+  // let k = p;
 
-  for (let j = 0; k < r + 1; j++, k++) {
-    secondHalf[j] = arr[k];
-  }
+  // for (let i = 0; k < q + 1; i++, k++) {
+  //   firstHalf[i] = arr[k];
+  // }
+
+  // for (let j = 0; k < r + 1; j++, k++) {
+  //   secondHalf[j] = arr[k];
+  // }
+
+  // using slice:
+  const firstHalf = arr.slice(p, q + 1);
+  const secondHalf = arr.slice(q + 1);
 
   return [firstHalf, secondHalf];
 }
 
 function merge(arr1, arr2) {
-  let i = 0, j = 0;
-  let newArr = [];
+  let i = 0, // arr1 index
+      j = 0; // arr2 index
+  let mergedArr = [];
 
   for (var k = 0; i < arr1.length && j < arr2.length; k++) {
     if (arr1[i] <= arr2[j]) {
-      newArr[k] = arr1[i];
-      i++;
+      mergedArr.push(arr1[i++]);
     }
-
     else {
-      newArr[k] = arr2[j];
-      j++;
+      mergedArr.push(arr2[j++]);
     }
   }
 
-  while (i < arr1.length) {
-    newArr[k] = arr1[i];
-    k++;
-    i++;
-  }
+  for ( ; i < arr1.length; i++) { mergedArr.push(arr1[i]); }
 
-  while (j < arr2.length) {
-    newArr[k] = arr2[j];
-    k++;
-    j++;
-  }
+  for ( ; j < arr2.length; j++) { mergedArr.push(arr2[j]); }
 
-  return newArr;
+  return mergedArr;
+}
+
+function mergeSort(arr) {
+  if (arr.length < 2) { return arr; }
+  else {
+    const halves = split(arr);
+    return merge(mergeSort(halves[0]), mergeSort(halves[1]));
+  }
 }

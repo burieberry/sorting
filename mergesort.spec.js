@@ -13,3 +13,14 @@ describe('Merge function', () => {
     expect(merge([1, 8], [-5, -3, 0])).toEqual([-5, -3, 0, 1, 8]);
   });
 });
+
+describe('MergeSort function', () => {
+  it('takes an array and returns an array', () => {
+    expect(mergeSort([])).toEqual([]);
+  });
+
+  it('returns sorted array', () => {
+    expect(mergeSort([8, 3, 1, 4])).toEqual([1, 3, 4, 8]);
+  });
+
+});
